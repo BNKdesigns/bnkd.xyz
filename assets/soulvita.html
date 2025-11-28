@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chnl.pilot</title>
+    <meta name="description" content="Experimental Free TV Broadcast System">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="icon" href="/assets/svg/chnlpilot.svg">
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffbd00">
+    <meta name="apple-mobile-web-app-title" content="chnl.pilot">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="chnl.pilot" />
+    <meta property="og:description" content="Experimental Free TV Broadcast System" />
+    <meta property="og:url" content="https://pilotbeta.webch.nl" />
+    <meta property="og:image" content="https://pilotbeta.webch.nl/assets/img/embed_banner.png" />
+    <meta name="theme-color" content="#ffbd00" />
+</head>
+
+<body>
+
+    <div class="ticker-wrap">
+    <div class="ticker">
+        <div class="ticker__item">chnl.pilot IS IN BETA // TOYHOUSE MEDIA: NOBODY BROADCASTS LIKE WE DO // JOIN THE WEBCHNL DISCORD // CUBBY AND NOOK TEST STREAMING TONIGHT // I PROMISE I'M WORKING ON IT //</div>
+        <div class="ticker__item">chnl.pilot IS IN BETA // TOYHOUSE MEDIA: NOBODY BROADCASTS LIKE WE DO // JOIN THE WEBCHNL DISCORD // CUBBY AND NOOK TEST STREAMING TONIGHT // I PROMISE I'M WORKING ON IT //</div>
+        <div class="ticker__item">chnl.pilot IS IN BETA // TOYHOUSE MEDIA: NOBODY BROADCASTS LIKE WE DO // JOIN THE WEBCHNL DISCORD // CUBBY AND NOOK TEST STREAMING TONIGHT // I PROMISE I'M WORKING ON IT //</div>
+        <div class="ticker__item">chnl.pilot IS IN BETA // TOYHOUSE MEDIA: NOBODY BROADCASTS LIKE WE DO // JOIN THE WEBCHNL DISCORD // CUBBY AND NOOK TEST STREAMING TONIGHT // I PROMISE I'M WORKING ON IT //</div>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="logo-area">
+        <a href="/">
+            <img src="/assets/svg/chnlpilotfull.svg" alt="chnl.pilot" class="logo">
+        </a>
+        <span class="badge" id="beta-badge" style="cursor: pointer;" title="Click for a surprise!">BETA!</span>
+    </div>
+    <div class="status-indicator">
+        <span class="blink">●</span> READY FOR TAKEOFF
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var betaBadge = document.getElementById('beta-badge');
+        if (betaBadge) {
+            betaBadge.addEventListener('click', function() {
+                var audio = new Audio('/assets/audio/chnloffline2.mp3');
+                audio.play().catch(function(e) {
+                    console.log("Audio play failed: " + e);
+                });
+            });
+        }
+    });
+</script>
+
+    <main class="container">
+        <section class="hero-section">
+            <div class="video-frame">
+                <div class="static-overlay hidden" id="static-overlay"></div>
+                <div class="video-overlay hidden" id="video-overlay">
+                    <div class="loading-text">INITIALIZING STREAM...</div>
+                </div>
+                <video id="main-player" class="video-js vjs-default-skin vjs-big-play-centered" controls
+                    preload="auto" autoplay data-setup='{}'>
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+                </video>
+            </div>
+            <div class="stream-info">
+                <div class="stream-title-area">
+                    <h2 id="current-stream-title">WAITING FOR SIGNAL...</h2>
+                    <a id="watch-page-link" href="#" class="watch-link" target="_blank">SEE MORE &nearr;</a>
+                </div>
+                <div class="stream-meta">
+                    <span id="current-stream-viewers">0 VIEWERS</span>
+                    <span class="live-tag hidden" id="live-tag">LIVE</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-section">
+            <div class="channel-grid" id="channel-grid">
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+    <div class="footer-content">
+        <p>v0.5 BETA. EXPERIMENTAL SOFTWARE BROUGHT TO YOU BY TOYHOUSE MEDIA</p>
+        <div class="footer-links">
+            <a href="https://discord.gg/SEg8jJttne">DISCORD</a>
+            <a href="https://webchnl.com/dmca">DMCA</a>
+            <a href="https://twitter.com/webchnl">TWITTER</a>
+            <a href="https://webchnl.com">WEBCHNL</a>
+        </div>
+    </div>
+</footer>
+
+    <template id="channel-template">
+        <div class="channel-card">
+            <div class="card-image">
+                <img src="" alt="Channel Icon" class="channel-icon">
+                <div class="status-overlay">OFFLINE</div>
+            </div>
+            <div class="card-info">
+                <h4 class="channel-name">Channel Name</h4>
+                <div class="card-meta">
+                    <span class="viewer-count">0</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
